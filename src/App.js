@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+  NavLink
+} from "react-router-dom";
+import Home from './pages/home'
+import Login from './pages/login'
+import ReduxDemo from './pages/reduxDemo'
+import y, { cm } from './until/style'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Router>
+        <div style={cm( y.udr, y.uac ,y.w(200),y.uja)}>
+          <NavLink to='/home'>首页</NavLink>
+          <NavLink to='/login'>登录</NavLink>
+          <NavLink to='/reduxDemo'>reduxDemo</NavLink>
+        </div>
+        <Switch>
+          <Route path='/home' component={Home} />
+          <Route path='/login' component={Login} />
+          <Route path='/reduxDemo' component={ReduxDemo} />
+          <Redirect to='/home' />
+        </Switch>
+      </Router>
     </div>
   );
 }
